@@ -83,7 +83,7 @@ const Navigation = () => {
                   color="#fff"
                   sx={{
                     textDecoration: 'none',
-                    marginRight: { xs: '140px', md: '0' },
+                    marginRight: { xs: '0', md: '0' },
 
                     ...hoverFocusStyles,
                   }}
@@ -133,13 +133,12 @@ const Navigation = () => {
                       textTransform: 'uppercase',
                       color: '#fff',
 
-                      display: 'inline-flex',
                       alignItems: 'center',
                       padding: '10px',
 
                       borderRadius: '10px',
                       border: '1px solid #fff',
-                      // display: { xs: 'none', md: 'inline-flex' },
+                      display: { xs: 'none', md: 'inline-flex' },
                       ...hoverFocusStyles,
                     }}
                   >

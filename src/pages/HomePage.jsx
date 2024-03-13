@@ -13,6 +13,7 @@ const HomePage = () => {
           alignItems: 'center',
           gap: '20px',
           padding: '100px 0',
+          flexDirection: { xs: 'column', md: 'row' },
         }}
       >
         <Avatar
@@ -20,28 +21,39 @@ const HomePage = () => {
           alt="phonebook"
           variant="square"
           sx={{
-            width: '400px',
-            height: '400px',
+            width: { xs: '250px', md: '400px' },
+            height: { xs: '250px', md: '400px' },
           }}
         />
         <Box sx={{ textAlign: 'center' }}>
           <Typography
-            fontSize="36px"
             marginBottom="20px"
             color={brandColor}
             textTransform={'uppercase'}
+            sx={{
+              fontSize: { xs: '30px', md: '36px' },
+            }}
           >
             Phone Book Application
           </Typography>
-          <Typography fontSize="30px">
+          <Typography
+            sx={{
+              fontSize: { xs: '24px', md: '30px' },
+            }}
+          >
             Here you can save, add and find you phone contacts.
           </Typography>
-          <Typography fontSize="30px">
+          <Typography
+            sx={{
+              fontSize: { xs: '24px', md: '30px' },
+            }}
+          >
             <Link
               to="/register"
               component={NavLink}
               sx={{
                 textDecoration: 'none',
+                fontSize: { xs: '24px', md: '30px' },
               }}
             >
               Register
@@ -52,6 +64,7 @@ const HomePage = () => {
               component={NavLink}
               sx={{
                 textDecoration: 'none',
+                fontSize: { xs: '24px', md: '30px' },
               }}
             >
               login

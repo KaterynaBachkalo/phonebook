@@ -2,34 +2,29 @@
 
 ## PHONE BOOK APPLICATION
 
+![Home page screenshot](./src/img/img-for-readme/home.png)
+
 Phone book is an application where you can save, add and find you phone
 contacts.
 
 With the added option of registration, you can manage your contacts
 confidentially. Also you can log out and then you move to the home page.
 
-When you get to the user account,
+When you get to the user account, you can see the user name and the form to add
+your contacts.
 
-У програмі "Книга контактів" додано можливість реєстрації, логіна та оновлення
-користувача, а також роботу з приватною колекцією контактів.
+Once you've added your contacts, you can find them by entering the name of the
+contact you're looking for in the form below. Also you can delete the contact.
 
-Бекенд Для цього завдання є готовий бекенд. Використовуй його замість твого
-бекенда створеного через сервіс mockapi.io. Бекенд підтримує всі необхідні
-операції з колекцією контактів, а також реєстрацію, логін та оновлення
-користувача за допомогою JWT.
+![Contacts page screenshot](./src/img/img-for-readme/contacts.png)
 
-Документація до бекенду
+Backend for this application is created by service mockapi.io.
 
-Маршрутизація У програмі є кілька сторінок з відповідними маршрутами:
+Styling is done using the library Material UI.
 
-/register: Публічний маршрут реєстрації нового користувача з формою. /login:
-Публічний маршрут логіна існуючого користувача з формою. /contacts: Приватний
-маршрут для роботи зі списком контактів користувача. Навігація У програмі є
-компонент навігації Navigation, який містить посилання для переходу по
-маршрутах.
+## Technologies
 
-Меню користувача Створено компонент UserMenu, який відображає пошту користувача
-та кнопку виходу з облікового запису.
+**Front-end**<br /> `React` `ReduxToolkit` `ReduxPersist` `Axios` `HTML/CSS`
+`Material UI` `react-loader-spinner` `react-toastify`
 
-Стилізація В оформленні інтерфейсу використовано бібліотеку стилізації Chakra
-UI.
+**Back-end**<br /> `UI-сервіс https://mockapi.io/`

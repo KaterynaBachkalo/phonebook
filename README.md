@@ -1,6 +1,14 @@
 # Книга контактів
 
-## Опис завдання
+## PHONE BOOK APPLICATION
+
+Phone book is an application where you can save, add and find you phone
+contacts.
+
+With the added option of registration, you can manage your contacts
+confidentially. Also you can log out and then you move to the home page.
+
+When you get to the user account,
 
 У програмі "Книга контактів" додано можливість реєстрації, логіна та оновлення
 користувача, а також роботу з приватною колекцією контактів.

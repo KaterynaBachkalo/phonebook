@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://KaterynaBachkalo.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://KaterynaBachkalo.github.io/phonebook/",
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.16",

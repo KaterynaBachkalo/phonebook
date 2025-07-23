@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const phoneBookInstance = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com',
+  baseURL: 'http://localhost:4000/api',
 });
 
 // Utility to add JWT
@@ -14,7 +14,10 @@ export const registerThunk = createAsyncThunk(
   'auth/register',
   async (formData, thunkAPI) => {
     try {
-      const response = await phoneBookInstance.post('/users/signup', formData);
+      const response = await phoneBookInstance.post(
+        '/users/register',
+        formData
+      );
 
       setToken(response.data.token);
       return response.data;
@@ -29,7 +32,8 @@ export const logInThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await phoneBookInstance.post('/users/login', formData);
-      setToken(response.data.token);
+
+      setToken(response.data.accessToken);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
@@ -42,7 +46,7 @@ export const logOutThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await phoneBookInstance.post('/users/logout');
-      // clearToken();
+
       return;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -55,7 +59,7 @@ export const refreshUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
 
-    const token = state.auth.token;
+    const token = state.auth.accessToken;
     try {
       setToken(token);
       const response = await phoneBookInstance.get('/users/current');
@@ -68,7 +72,7 @@ export const refreshUserThunk = createAsyncThunk(
   {
     condition: (_, thunkAPI) => {
       const state = thunkAPI.getState();
-      const token = state.auth.token;
+      const token = state.auth.accessToken;
 
       if (!token) return false;
       return true;

@@ -31,7 +31,7 @@ const handleRejected = (state, action) => {
 };
 
 const handleFulfilled = (state, action) => {
-  state.token = action.payload.token;
+  state.accessToken = action.payload.accessToken;
   state.user = action.payload.user;
   state.isLoading = false;
   state.authenticated = true;
@@ -39,7 +39,7 @@ const handleFulfilled = (state, action) => {
 };
 
 const INITIAL_STATE = {
-  token: null,
+  accessToken: null,
   user: {
     email: null,
     name: null,
@@ -64,11 +64,11 @@ const authSlice = createSlice({
         state.authenticated = true;
         state.user = action.payload;
         // state.error = null;
-        if (state.token === null) return;
+        if (state.accessToken === null) return;
       })
 
       .addCase(logOutThunk.fulfilled, (state, action) => {
-        state.token = null;
+        state.accessToken = null;
         state.user = { email: null, name: null };
         state.isLoading = false;
         state.authenticated = false;

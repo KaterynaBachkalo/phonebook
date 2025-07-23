@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import ContactItem from 'components/ContactItem';
 import {
-  selectError,
   selectIsLoading,
   selectVisibleContacts,
 } from 'redux/contacts/selectors';
@@ -11,7 +10,6 @@ import { List } from '@mui/material';
 
 const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
@@ -24,7 +22,13 @@ const ContactList = () => {
   return (
     <List sx={{ width: '100%', maxWidth: 650, margin: 'auto' }}>
       {isLoading && <Loader />}
-      {error && <p className="error">{error}</p>}
+
+      {!isLoading && filteredContacts.length === 0 && (
+        <p className="empty">There are no contacts in your phonebook.</p>
+      )}
+      {!isLoading && filteredContacts.length > 0 && (
+        <p className="contacts">You have {filteredContacts.length} contacts.</p>
+      )}
       {!isLoading &&
         filteredContacts?.map(({ name, id, number }) => (
           <ContactItem

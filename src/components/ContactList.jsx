@@ -50,12 +50,12 @@ const ContactList = () => {
         </Typography>
       )}
       {!isLoading &&
-        filteredContacts?.map(({ name, id, number }) => (
+        filteredContacts?.map(({ name, id, phone }) => (
           <ContactItem
             name={name}
             id={id}
             key={id}
-            number={number}
+            phone={phone}
             deleteContact={onDeleteContact}
           />
         ))}

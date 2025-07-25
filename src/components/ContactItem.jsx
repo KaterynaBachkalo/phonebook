@@ -2,7 +2,7 @@ import { ReactComponent as IconDelete } from '../img/icon-recycle-bin.svg';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { IconButton, ListItem, ListItemText, SvgIcon } from '@mui/material';
 
-const ContactItem = ({ id, name, number, deleteContact }) => {
+const ContactItem = ({ id, name, phone, deleteContact }) => {
   return (
     <ListItem>
       <AccountCircleRoundedIcon
@@ -17,7 +17,7 @@ const ContactItem = ({ id, name, number, deleteContact }) => {
         primary={
           <span style={{ color: '#1976d2', fontSize: '20px' }}>{name}</span>
         }
-        secondary={number}
+        secondary={phone}
       />
 
       <IconButton type="button" onClick={() => deleteContact(id)}>

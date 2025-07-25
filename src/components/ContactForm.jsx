@@ -20,11 +20,11 @@ const ContactForm = () => {
 
   const onSubmit = newContacts => {
     const isExistContactName = contacts?.some(
-      contact => newContacts.name === contact.name
+      contact => newContacts.phone === contact.phone
     );
 
     if (isExistContactName) {
-      toast.warn(`${newContacts.name} is already in contacts`, {
+      toast.warn(`${newContacts.phone} is already in contacts`, {
         position: 'top-center',
         autoClose: 2000,
         hideProgressBar: false,
@@ -75,26 +75,26 @@ const ContactForm = () => {
 
       <TextField
         required
-        id="standard-number-input"
-        label="Number"
+        id="standard-phone-input"
+        label="Phone"
         type="text"
-        autoComplete="current-number"
+        autoComplete="current-phone"
         sx={{
           bgcolor: 'transparent',
         }}
         variant="standard"
-        {...register('number', {
+        {...register('phone', {
           minLength: {
             value: 6,
             message: 'Minimum length should be 6',
           },
-          // maxLength: {
-          //   value: 10,
-          //   message: 'Maximum length should be 10',
-          // },
+          maxLength: {
+            value: 10,
+            message: 'Maximum length should be 10',
+          },
         })}
       />
-      {errors.number && <p>{errors.number.message}</p>}
+      {errors.phone && <p>{errors.phone.message}</p>}
 
       <Button
         variant="outlined"

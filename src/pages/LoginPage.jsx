@@ -11,9 +11,11 @@ import {
 import { brandColor, formStyles } from 'constants/constants';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { logInThunk } from 'redux/auth/operations';
+import { selectAuthError } from 'redux/auth/selectors';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +23,8 @@ const LoginPage = () => {
   const handleMouseDownPassword = event => {
     event.preventDefault();
   };
+
+  const error = useSelector(selectAuthError);
 
   const {
     register,
@@ -32,6 +36,19 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const onSubmit = data => {
+    if (error === 401) {
+      toast.error('User with this email not found', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    }
+
     dispatch(logInThunk(data));
     reset();
   };

@@ -19,7 +19,6 @@ export const registerThunk = createAsyncThunk(
         formData
       );
 
-      setToken(response.data.token);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);

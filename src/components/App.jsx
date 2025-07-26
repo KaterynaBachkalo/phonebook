@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from 'redux/auth/operations';
 
-import RestrictedRoute from './RestrictedRoute';
+import RestrictedRouteLogin from './RestrictedRouteLogin';
+import RestrictedRouteRegister from './RestrictedRouteRegister';
 import PrivateRoute from './PrivateRoute';
 
 import { Loader } from './Loader';
@@ -32,17 +33,17 @@ export const App = () => {
     {
       path: '/register',
       element: (
-        <RestrictedRoute>
+        <RestrictedRouteRegister>
           <RegisterPage />
-        </RestrictedRoute>
+        </RestrictedRouteRegister>
       ),
     },
     {
       path: '/login',
       element: (
-        <RestrictedRoute>
+        <RestrictedRouteLogin>
           <LoginPage />
-        </RestrictedRoute>
+        </RestrictedRouteLogin>
       ),
     },
     {

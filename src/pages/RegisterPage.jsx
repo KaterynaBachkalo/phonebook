@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import { brandColor, formStyles } from 'constants/constants';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,16 +22,25 @@ const RegisterPage = () => {
     event.preventDefault();
   };
 
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const dispatch = useDispatch();
 
   const onSubmit = data => {
     dispatch(registerThunk(data));
+    toast.success('User registered successfully', {
+      position: 'top-center',
+      autoClose: 2000,
+      theme: 'colored',
+    });
+    navigate('/login');
     reset();
   };
 

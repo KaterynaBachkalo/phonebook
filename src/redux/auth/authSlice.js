@@ -28,6 +28,18 @@ const handleRejected = (state, action) => {
       theme: 'colored',
     });
   }
+  if (state.error === 409) {
+    toast.error('Such email is already registered', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  }
 };
 
 const handleFulfilled = (state, action) => {
@@ -55,7 +67,12 @@ const authSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(registerThunk.fulfilled, handleFulfilled)
+      .addCase(registerThunk.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoading = false;
+        state.authenticated = false;
+        state.error = null;
+      })
 
       .addCase(logInThunk.fulfilled, handleFulfilled)
 
@@ -63,7 +80,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.authenticated = true;
         state.user = action.payload;
-        // state.error = null;
+        state.error = null;
         if (state.accessToken === null) return;
       })
 

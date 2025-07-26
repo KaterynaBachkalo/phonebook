@@ -46,7 +46,7 @@ const ContactList = () => {
           textAlign="center"
           margin="20px 0 20px"
         >
-          You have {filteredContacts.length} contacts.
+          You have {filteredContacts.length} contacts
         </Typography>
       )}
       {!isLoading &&
